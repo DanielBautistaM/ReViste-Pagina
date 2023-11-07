@@ -41,8 +41,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        $user->addRole('User'); // parameter can be a Role object, BackedEnum, array, id or the role string name
-
+        $user->addRole('user');
         event(new Registered($user));
 
         Auth::login($user);
