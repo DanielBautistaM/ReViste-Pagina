@@ -7,35 +7,35 @@ use App\Models\Category;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
-class SubCategoryController extends Controller
+class SubcategoryController extends Controller
 {
-    public function index(){
+    public function index() {
         return view("admin.allsubcategory");
     }
-    public function AddSubCategory(){
+
+    public function addSubCategory() {
         $categories = Category::latest()->get();
         return view("admin.addsubcategory", compact("categories"));
     }
 
-    public function storeSubcategory(Request $request){
+    public function storeSubcategory(Request $request) {
         $request->validate([
             'subcategory_name' => 'required|unique:subcategories',
-            "category_id" => "required"
+            'category_id' => 'required'
         ]);
 
         $category_id = $request->category_id;
-
-        $category_name = Category::where("id", $category_id)->value("category_name");
+        $category_name = Category::where('id', $category_id)->value('category_name');
 
         Subcategory::insert([
-            'subcategory_name' => $request->category_name,
-            'slug' => strtolower(str_replace(' ', '-', $request->category_name)),
+            'subcategory_name' => $request->subcategory_name,
+            'slug' => strtolower(str_replace(' ', '-', $request->subcategory_name)),
             'category_id' => $category_id,
             'category_name' => $category_name
         ]);
 
-        Category::where("id", $category_id)->increment("subcategory_count",1);
+        Category::where('id', $category_id)->increment('subcategory_count', 1);
 
-        return redirect()->route('allsubcategory')->with('message', 'La subcategoria se agregó correctamente!');
+        return redirect()->route('allsubcategory')->with('message', 'La subcategoria se agregó correctamente');
     }
 }
