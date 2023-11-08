@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('slug');
             $table->integer('subcategory_count')->default(0);
             $table->integer('product_count')->default(0);
-            $table->timestamps();
+            $table->timestamps(); // Agrega las columnas created_at y updated_at
         });
     }
 

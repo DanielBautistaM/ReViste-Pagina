@@ -8,7 +8,7 @@ Todas las Subcategorias - ReViste
 
 @section('content')
 
-<  <div class="container-xxl flex-grow-1 container-p-y">
+ <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Paginas/</span> Todas las Sub-Categorias</h4><div class="card">
 sub
                 <h5 class="card-header">Categorias Disponibles</h5>

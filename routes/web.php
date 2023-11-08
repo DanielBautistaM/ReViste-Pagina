@@ -8,58 +8,44 @@ use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'role:user','verified'])->name('dashboard');
+Route::middleware(['auth', 'role:user', 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
-Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'role:admin'])->group(function(){
-    Route::controller(DashboardController::class)->group(function(){
-        Route::get('/admin/dashboard', 'Index')->name('admindashboard');
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('admindashboard');
+
+        Route::prefix('category')->group(function () {
+            Route::get('/all', [CategoryController::class, 'index'])->name('allcategory');
+            Route::get('/add', [CategoryController::class, 'addCategory'])->name('addcategory');
+            Route::post('/store', [CategoryController::class, 'store'])->name('storecategory');
+        });
+
+        Route::prefix('subcategory')->group(function () {
+            Route::get('/all', [SubCategoryController::class, 'index'])->name('allsubcategory');
+            Route::get('/add', [SubCategoryController::class, 'addSubCategory'])->name('addsubcategory');
+        });
+
+        Route::prefix('product')->group(function () {
+            Route::get('/all', [ProductController::class, 'index'])->name('allproduct');
+            Route::get('/add', [ProductController::class, 'addProduct'])->name('addproduct');
+        });
+
+        Route::prefix('order')->group(function () {
+            Route::get('/pending', [OrderController::class, 'index'])->name('pendingorders');
+        });
     });
-    Route::controller(CategoryController::class)->group(function(){
-        Route::get('/admin/all-category', 'Index')->name('allcategory');
-        Route::get('/admin/add-category', 'AddCategory')->name('addcategory');
-
-    });
-
-    Route::controller(SubCategoryController::class)->group(function(){
-        Route::get('/admin/all-subcategory', 'Index')->name('allsubcategory');
-        Route::get('/admin/add-subcategory', 'AddSubCategory')->name('addsubcategory');
-
-    });
-
-    Route::controller(ProductController::class)->group(function(){
-        Route::get('/admin/all-products', 'Index')->name('allproduct');
-        Route::get('/admin/add-product', 'AddProduct')->name('addproduct');
-
-    });
-
-    Route::controller(OrderController::class)->group(function(){
-        Route::get('/admin/pending-order', 'Index')->name('pendingorders');
-
-    });
-
 });
 
 require __DIR__.'/auth.php';
