@@ -7,6 +7,11 @@
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Paginas/</span> Todas los Productos</h4>
+        @if (session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session()->get('message') }}
+                </div>
+            @endif
         <div class="card">
 
             <h5 class="card-header">Todos los productos Disponibles</h5>
