@@ -30,11 +30,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
             Route::get('/all', [CategoryController::class, 'index'])->name('allcategory');
             Route::get('/add', [CategoryController::class, 'addCategory'])->name('addcategory');
             Route::post('/store', [CategoryController::class, 'store'])->name('storecategory');
+            Route::get('/editcategory/{id}', [CategoryController::class, 'EditCategory'])->name('editcategory');
+            Route::post('/updatecategory', [CategoryController::class, 'UptadeCategory'])->name('updatecategory');
+            Route::get('/deletecategory/{id}', [CategoryController::class, 'DeleteCategory'])->name('deletecategory');
         });
 
         Route::prefix('subcategory')->group(function () {
             Route::get('/all', [SubCategoryController::class, 'index'])->name('allsubcategory');
             Route::get('/add', [SubCategoryController::class, 'addSubCategory'])->name('addsubcategory');
+            Route::post('/store-subcategory', [SubcategoryController::class, 'storeSubcategory'])->name('storesubcategory');
+        
         });
 
         Route::prefix('product')->group(function () {
@@ -48,4 +53,4 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
