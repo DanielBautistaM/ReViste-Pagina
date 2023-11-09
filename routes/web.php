@@ -48,6 +48,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
             Route::get('/all', [ProductController::class, 'index'])->name('allproduct');
             Route::get('/add', [ProductController::class, 'addProduct'])->name('addproduct');
             Route::post('/storeproduct', [ProductController::class, 'StoreProduct'])->name('storeproduct');
+            Route::get('/edit-product-img/{id}', [ProductController::class, 'EditProductImg'])->name('editproductimg');
+            Route::post('/update-product-img', [ProductController::class, 'UpdateProductImg'])->name('updateproductimg');
+            Route::get('/edit-product/{id}', [ProductController::class, 'EditProduct'])->name('editproduct');
+            Route::post('/update-product', [ProductController::class, 'UpdateProduct'])->name('updateproduct');
+            Route::get('/delete-product/{id}', [ProductController::class, 'DeleteProduct'])->name('deleteproduct');
 
         });
 

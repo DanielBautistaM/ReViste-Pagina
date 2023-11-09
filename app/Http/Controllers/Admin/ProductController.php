@@ -12,7 +12,8 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     public function Index(){
-        return view("admin.allproduct");
+        $products=Product::latest()->get();
+        return view("admin.allproduct",compact("products"));
     }
     public function AddProduct(){
         $categories = Category::latest()->get();
@@ -68,4 +69,74 @@ class ProductController extends Controller
         return redirect()->route('allproduct')->with('message', 'El producto se agregó correctamente');
 
     }
+
+    public function EditProductImg($id){
+
+        $productinfo=Product::findOrFail($id);
+        return view('admin.editproductimg',compact('productinfo'));
+    }
+
+    
+    public function UpdateProductImg(Request $request){
+        $request->validate([
+           
+            'product_img' => 'required|required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+        ]);
+        $id=$request->id;
+        $image = $request->file('product_img');
+        $img_name = hexdec(uniqid()) .'.'. $image->getClientOriginalExtension();
+        $request->product_img -> move(public_path('upload'), $img_name);
+        $img_url = 'upload/' . $img_name;
+
+        Product::findOrFail($id)->update([
+            'product_img' => $img_url,
+        ]);
+        return redirect()->route('allproduct')->with('message', 'La imagen se cambio correctamente');
+
+    }
+
+    public function EditProduct($id){
+        $productinfo= Product::findOrFail($id);
+        return view('admin.editproduct',compact('productinfo'));
+
+    }
+    
+
+
+    public function UpdateProduct(Request $request){
+        $productid=$request->id;
+        $request->validate([
+            'product_name' => 'required|unique:products',
+            'price' => 'required',
+            'quantity' => 'required',
+            'product_short_des' => 'required',
+            'product_long_des' => 'required',
+        ]);
+       Product::findOrFail($productid)->update([
+
+        'product_name' => $request->product_name,
+        'product_short_des' => $request->product_short_des,
+        'product_long_des' => $request->product_long_des,
+        'price' => $request->price,
+        'quantity' => $request->quantity,
+        'slug' => strtolower(str_replace(' ', '-', $request->product_name)),
+
+       ]);
+       return redirect()->route('allproduct')->with('message', 'El producto se actualizó correctamente');
+
+}
+
+public function DeleteProduct($id){
+
+
+   
+    $cat_id= Product::where("id", $id)->value("product_category_id");
+    $subcat_id= Product::where("id", $id)->value("product_subcategory_id");
+    Product::findOrFail($id)->delete();
+    Category::where("id", $cat_id)->decrement('product_count', 1);
+    Subcategory::where("id", $subcat_id)->decrement('product_count', 1);
+    return redirect()->route('allproduct')->with('message', 'Producto Elmininado correctamente');
+}
+
 }
