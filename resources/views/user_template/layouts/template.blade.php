@@ -82,7 +82,7 @@
                   </div>
                   <span class="toggle_icon" onclick="openNav()"><img src="{{asset('home/images/toggle-icon.png')}}"></span>
                   <div class="dropdown">
-                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Category 
+                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorias
                      </button>
                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#">Accion</a>
@@ -600,7 +600,7 @@
          <div class="container">
             <div class="footer_logo"><a href="index.html"><img src="{{asset('home/images/footer-logo.png')}}"></a></div>
             <div class="input_bt">
-               <input type="text" class="mail_bt" placeholder="Your Email" name="Your Email">
+               <input type="text" class="mail_bt" placeholder="Email" name="Your Email">
                <span class="subscribe_bt" id="basic-addon2"><a href="#">Subscribite</a></span>
             </div>
             <div class="footer_menu">
@@ -612,14 +612,14 @@
                   <li><a href="#">Atencion al Cliente</a></li>
                </ul>
             </div>
-            <div class="location_main">Linea De Atencion  Numero: <a href="#">+1 1800 1200 1200</a></div>
+            <div class="location_main">Linea De Atencion  Numero: <a href="#">+57 305 2376173</a></div>
          </div>
       </div>
       <!-- footer section end -->
       <!-- copyright section start -->
       <div class="copyright_section">
          <div class="container">
-            <p class="copyright_text">© 2020 All Rights Reserved. Design by <a href="https://html.design">Free html  Templates</a></p>
+            <p class="copyright_text">© 2023 Todos los Derechos reservados</a></p>
          </div>
       </div>
       <!-- copyright section end -->
