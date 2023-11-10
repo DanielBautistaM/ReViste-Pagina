@@ -57,7 +57,7 @@
                             <ul>
                            
                                 <li><a href="#">Mas Vendidos</a></li>
-                                <li><a href="{{ route('category') }}">Ideas De Regalo</a></li>
+                                <li><a href="">Ideas De Regalo</a></li>
                                 <li><a href="{{ route('newrelease') }}">Nuevos Lanzamientos</a></li>
                                 <li><a href="{{ route('todaysdeal') }}">Ofertas del dia</a></li>
                                 <li><a href="{{ route('customerservice') }}">Servicio al Cliente</a></li>
@@ -89,7 +89,7 @@
                         <a href="index.html">Home</a>
 
                            @foreach ($categories as $category)
-                           <a href="fashion.html">{{$category->category_name}}</a>
+                           <a href="{{ route('category', [$category->id, $category->slug]) }}">{{$category->category_name}}</a>
                             @endforeach
                       
                     </div>
@@ -102,7 +102,7 @@
                         
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         @foreach ($categories as $category)
-                        <a class="dropdown-item" href="#">{{$category->category_name}}</a>
+                        <a class="dropdown-item" href="{{ route('category', [$category->id, $category->slug]) }}">{{$category->category_name}}">{{$category->category_name}}</a>
                             @endforeach
                             
                         </div>
