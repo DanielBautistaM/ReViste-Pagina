@@ -4,150 +4,34 @@
     <!-- fashion section start -->
     <h2 class="py-5">Pagina Principal</h2>
     <div class="fashion_section">
-        <div id="main_slider" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
+        <div id="main_slider" >
+          
                 <div class="carousel-item active">
                     <div class="container">
-                        <h1 class="fashion_taital">Hombre & Mujer Fashion</h1>
+                        <h1 class="fashion_taital">Todos los productos</h1>
                         <div class="fashion_section_2">
                             <div class="row">
+                                @foreach ($allproducts as $product)
+
+                              
                                 <div class="col-lg-4 col-sm-4">
                                     <div class="box_main">
-                                        <h4 class="shirt_text">Camisa de Hombre</h4>
-                                        <p class="price_text">Precio <span style="color: #262626;">$ 30</span></p>
-                                        <div class="tshirt_img"><img src="{{ asset('home/images/tshirt-img.png') }}"></div>
+                                        <h4 class="shirt_text">{{$product->product_name}}</h4>
+                                        <p class="price_text">Precio <span style="color: #262626;">{{$product->price}} </span></p>
+                                        <div class="tshirt_img"><img src="{{ asset($product->product_img) }}"></div>
                                         <div class="btn_main">
                                             <div class="buy_bt"><a href="#">Compra Ahora</a></div>
                                             <div class="seemore_bt"><a href="#">Ver Mas</a></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-sm-4">
-                                    <div class="box_main">
-                                        <h4 class="shirt_text">Camisa de Hombre</h4>
-                                        <p class="price_text">Precio <span style="color: #262626;">$ 30</span></p>
-                                        <div class="tshirt_img"><img src="{{ asset('home/images/dress-shirt-img.png') }}">
-                                        </div>
-                                        <div class="btn_main">
-                                            <div class="buy_bt"><a href="#">Compra Ahora</a></div>
-                                            <div class="seemore_bt"><a href="#">Ver Mas</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-sm-4">
-                                    <div class="box_main">
-                                        <h4 class="shirt_text">Bufanda de Mujer</h4>
-                                        <p class="price_text">Precio <span style="color: #262626;">$ 30</span></p>
-                                        <div class="tshirt_img"><img src="{{ asset('home/images/women-clothes-img.png') }}">
-                                        </div>
-                                        <div class="btn_main">
-                                            <div class="buy_bt"><a href="#">Compra Ahora</a></div>
-                                            <div class="seemore_bt"><a href="#">Ver Mas</a></div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="container">
-                        <h1 class="fashion_taital">Hombre & Mujer Fashion</h1>
-                        <div class="fashion_section_2">
-                            <div class="row">
-                                <div class="col-lg-4 col-sm-4">
-                                    <div class="box_main">
-                                        <h4 class="shirt_text">Camisa de Hombre</h4>
-                                        <p class="price_text">Precio <span style="color: #262626;">$ 30</span></p>
-                                        <div class="tshirt_img"><img src="{{ asset('home/images/tshirt-img.png') }}"></div>
-                                        <div class="btn_main">
-                                            <div class="buy_bt"><a href="#">Compra Ahora</a></div>
-                                            <div class="seemore_bt"><a href="#">Ver Mas</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-sm-4">
-                                    <div class="box_main">
-                                        <h4 class="shirt_text">Camisa de Hombre</h4>
-                                        <p class="price_text">Precio <span style="color: #262626;">$ 30</span></p>
-                                        <div class="tshirt_img"><img src="{{ asset('home/images/dress-shirt-img.png') }}">
-                                        </div>
-                                        <div class="btn_main">
-                                            <div class="buy_bt"><a href="#">Compra Ahora</a></div>
-                                            <div class="seemore_bt"><a href="#">Ver Mas</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-sm-4">
-                                    <div class="box_main">
-                                        <h4 class="shirt_text">Bufanda de Mujer</h4>
-                                        <p class="price_text">Precio <span style="color: #262626;">$ 30</span></p>
-                                        <div class="tshirt_img"><img
-                                                src="{{ asset('home/images/women-clothes-img.png') }}"></div>
-                                        <div class="btn_main">
-                                            <div class="buy_bt"><a href="#">Compra Ahora</a></div>
-                                            <div class="seemore_bt"><a href="#">Ver Mas</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="container">
-                        <h1 class="fashion_taital">Hombre & Mujer Fashion</h1>
-                        <div class="fashion_section_2">
-                            <div class="row">
-                                <div class="col-lg-4 col-sm-4">
-                                    <div class="box_main">
-                                        <h4 class="shirt_text">Camisa de Hombre</h4>
-                                        <p class="price_text">Precio <span style="color: #262626;">$ 30</span></p>
-                                        <div class="tshirt_img"><img src="{{ asset('home/images/tshirt-img.png') }}">
-                                        </div>
-                                        <div class="btn_main">
-                                            <div class="buy_bt"><a href="#">Comprar Ahora</a></div>
-                                            <div class="seemore_bt"><a href="#">Ver mas</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-sm-4">
-                                    <div class="box_main">
-                                        <h4 class="shirt_text">Camisa de Hombre</h4>
-                                        <p class="price_text">Price <span style="color: #262626;">$ 30</span></p>
-                                        <div class="tshirt_img"><img src="{{ asset('home/images/dress-shirt-img.png') }}">
-                                        </div>
-                                        <div class="btn_main">
-                                            <div class="buy_bt"><a href="#">Comprar Ahora</a></div>
-                                            <div class="seemore_bt"><a href="#">Ver mas</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-sm-4">
-                                    <div class="box_main">
-                                        <h4 class="shirt_text">Bufanda de Mujer</h4>
-                                        <p class="price_text">Precio <span style="color: #262626;">$ 30</span></p>
-                                        <div class="tshirt_img"><img
-                                                src="{{ asset('home/images/women-clothes-img.png') }}"></div>
-                                        <div class="btn_main">
-                                            <div class="buy_bt"><a href="#">Comprar Ahora</a></div>
-                                            <div class="seemore_bt"><a href="#">Ver mas</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
-                <i class="fa fa-angle-left"></i>
-            </a>
-            <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        </div>
-    </div>
+              
     <!-- fashion section end -->
     <!-- electronic section start -->
     <div class="fashion_section">
