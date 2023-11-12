@@ -1,4 +1,3 @@
-
 @php
   $categories= App\Models\Category::latest()->get();
 @endphp
@@ -55,7 +54,7 @@
                     <div class="col-sm-12">
                         <div class="custom_menu">
                             <ul>
-                           
+
                                 <li><a href="#">Mas Vendidos</a></li>
                                 <li><a href="">Ideas De Regalo</a></li>
                                 <li><a href="{{ route('newrelease') }}">Nuevos Lanzamientos</a></li>
@@ -91,7 +90,7 @@
                            @foreach ($categories as $category)
                            <a href="{{ route('category', [$category->id, $category->slug]) }}">{{$category->category_name}}</a>
                             @endforeach
-                      
+
                     </div>
                     <span class="toggle_icon" onclick="openNav()"><img
                             src="{{ asset('home/images/toggle-icon.png') }}"></span>
@@ -99,12 +98,12 @@
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorias
                         </button>
-                        
+
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         @foreach ($categories as $category)
-                        <a class="dropdown-item" href="{{ route('category', [$category->id, $category->slug]) }}">{{$category->category_name}}">{{$category->category_name}}</a>
+                        <a class="dropdown-item" href="{{ route('category', [$category->id, $category->slug]) }}">{{$category->category_name}}</a>
                             @endforeach
-                            
+
                         </div>
                     </div>
                     <div class="main">
@@ -143,7 +142,7 @@
                                 </li>
                                 <li><a href="#">
                                         <i class="fa fa-user" aria-hidden="true"></i>
-                                        <span class="padding_10">Carrito</span></a>
+                                        <span class="padding_10">Usuario</span></a>
                                 </li>
                             </ul>
                         </div>
