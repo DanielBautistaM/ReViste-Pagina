@@ -15,7 +15,7 @@
                                     <div class="tshirt_img"><img src="{{ asset($product->product_img) }}"></div>
                                     <div class="btn_main">
                                         <div class="buy_bt"><a href="#">Compra Ahora</a></div>
-                                        <div class="seemore_bt"><a href="#">Ver Mas</a></div>
+                                        <div class="seemore_bt"><a href="{{route('singleproduct',[$product->id,$product->slug])}}">Ver Mas</a></div>
                                     </div>
                                 </div>
                             </div>

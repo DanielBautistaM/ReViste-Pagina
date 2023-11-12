@@ -17,11 +17,11 @@
                                 <div class="col-lg-4 col-sm-4">
                                     <div class="box_main">
                                         <h4 class="shirt_text">{{$product->product_name}}</h4>
-                                        <p class="price_text">Precio <span style="color: #262626;">{{$product->price}} </span></p>
+                                        <p class="price_text">Precio <span style="color: #262626;">${{$product->price}} </span></p>
                                         <div class="tshirt_img"><img src="{{ asset($product->product_img) }}"></div>
                                         <div class="btn_main">
                                             <div class="buy_bt"><a href="#">Compra Ahora</a></div>
-                                            <div class="seemore_bt"><a href="#">Ver Mas</a></div>
+                                            <div class="seemore_bt"><a href="{{route('singleproduct',[$product->id,$product->slug])}}">Ver Mas</a></div>
                                         </div>
                                     </div>
                                 </div>
