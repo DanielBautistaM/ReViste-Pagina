@@ -27,6 +27,20 @@ Route::controller(ClientController::class)->group(function () {
 });
 
 
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::controller(ClientController::class)->group(function () {
+        Route::get('/add-to-cart', 'AddToCart')->name('addtocart');
+        Route::get('/checkout', 'Checkout')->name('checkout');
+        Route::get('/user-profile', 'UserProfile')->name('userprofile');
+        Route::get('/user-profile/pending-orders', 'PendingOrders')->name('pendingorders');
+        Route::get('/user-profile/history', 'History')->name('history');
+
+        Route::get('/todays-deal', 'TodaysDeal')->name('todaysdeal');
+        Route::get('/custom-service', 'CustomerService')->name('customerservice');
+    });
+
+});
+
 Route::middleware(['auth', 'role:user', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -72,7 +86,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         });
 
         Route::prefix('order')->group(function () {
-            Route::get('/pending', [OrderController::class, 'index'])->name('pendingorders');
+            Route::get('/pending', [OrderController::class, 'index'])->name('pendingordersADMIN');
+            //CAMBIO ACA DE PENDINGORDERS PORQUE SINO NO FUNCIONA EN LA PARTE DE USUARIO, se llamaba pendingorders y lo pase a llamar pendingordersADMIN 
+            //tonces ojito si despues se usa esto
         });
     });
 });

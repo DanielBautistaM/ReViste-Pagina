@@ -19,7 +19,7 @@
            <ul class="p-2 bg-light my-2 ">
             <li>Categoria - {{$product->product_category_name}}</li>
             <li>Sub Categoria - {{$product->product_subcategory_name}}</li>
-            <li>Cantidad DIsponible -{{$product->quantity}}</li>
+            <li>Cantidad DIsponible - {{$product->quantity}}</li>
            </ul>
 
             </div>
