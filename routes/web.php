@@ -90,7 +90,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         });
 
         Route::prefix('order')->group(function () {
-            Route::get('/pending', [OrderController::class, 'index'])->name('pendingordersADMIN');
+            Route::get('/pending', [OrderController::class, 'index'])->name('pendingorder');
             //CAMBIO ACA DE PENDINGORDERS PORQUE SINO NO FUNCIONA EN LA PARTE DE USUARIO, se llamaba pendingorders y lo pase a llamar pendingordersADMIN
             //tonces ojito si despues se usa esto
         });

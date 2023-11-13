@@ -135,7 +135,7 @@
               <span class="menu-header-text">Ordenes</span>
             </li>
             <li class="menu-item">
-              <a href="{{ route('pendingorders') }}" class="menu-link">
+              <a href="{{ route('pendingorder') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Ordenes Pendientes</div>
               </a>

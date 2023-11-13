@@ -37,7 +37,7 @@
         @foreach ($related_products as $product)
 
 
-    class="col-lg-4 col-sm-4">
+        class="col-lg-4 col-sm-4">
         <div class="box_main">
         <h4 class="shirt_text">{{$product->product_name}}</h4>
         <p class="price_text">Precio <span style="color: #262626;">${{$product->price}} </span>

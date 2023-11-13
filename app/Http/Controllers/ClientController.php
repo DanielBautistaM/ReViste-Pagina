@@ -92,17 +92,13 @@ class ClientController extends Controller
                 'total_price'=> $item->price,
 
 
-
-
-
-
-
-
             ]);
             $id= $item->id;
             Cart::findOrFail($id)->delete();
 
         }
+        $shippingInfo=ShippingInfo::where('user_id', $userid)->delete(); 
+
 
 
         return redirect()->route('pendingorders')->with('message','Tus productos han sido ordenados correctamente');
@@ -117,7 +113,9 @@ class ClientController extends Controller
 
 
     public function PendingOrders( ){
-        return view('user_template.pendingorders');
+
+        $pending_orders = Order::where('status','pending')->latest()->get();
+        return view('user_template.pendingorders',compact('pending_orders'));
 
     }
 
