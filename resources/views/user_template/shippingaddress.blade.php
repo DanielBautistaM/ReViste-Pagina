@@ -8,16 +8,19 @@
                 @csrf
                 <div class="form-group">
                     <label for="phone_numer">Numero de Telefono: </label>
+                    <br>
                     <input type="text" class="phone_numer" name="phone_numer">
                 </div>    
 
                 <div class="form-group">
                     <label for="city_name">Ciudad/Municipio: </label>
+                    <br>
                     <input type="text" class="city_name" name="city_name">
                 </div>   
 
                 <div class="form-group">
                     <label for="postal_code">Codigo Postal: </label>
+                    <br>
                     <input type="text" class="postal_code" name="postal_code">
                 </div>   
 
