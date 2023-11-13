@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\ShippingInfo;
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
@@ -58,19 +59,55 @@ class ClientController extends Controller
     public function AddShippingAddress(Request $request){
         ShippingInfo::insert([
             'user_id' => Auth::id(),
-            'phone_numer' => $request->phone_number,
+            'phone_numer' => $request->phone_number, // Corregido aquí
             'city_name' => $request->city_name,
             'postal_code' => $request->postal_code,
-
-
         ]);
-
+    
         return redirect()->route('checkout');
-        
     }
 
     public function Checkout(){
-        return view('user_template.checkout');
+        $userid = Auth::id();
+        $cart_items = Cart::where('user_id', $userid)->get();
+        $shipping_address=ShippingInfo::where('user_id', $userid)->first(); 
+        return view('user_template.checkout',compact('cart_items','shipping_address'));
+    }
+
+    public function PlaceOrder(){
+
+        $userid = Auth::id();
+        $shipping_address=ShippingInfo::where('user_id', $userid)->first(); 
+        $cart_items = Cart::where('user_id', $userid)->get();
+
+        foreach($cart_items as $item){
+            Order::insert([
+                'userid'=> $userid,
+                'shipping_phoneNumber'=> $shipping_address->phone_numer,
+                'shipping_city'=> $shipping_address->city_name,
+                'shipping_postalcode'=> $shipping_address->postal_code,
+
+                'product_id'=> $item->product_id,
+                'quantity'=> $item->quantity,
+                'total_price'=> $item->price,
+
+
+
+
+
+
+
+
+            ]);
+            $id= $item->id;
+            Cart::findOrFail($id)->delete();
+
+        }
+
+
+        return redirect()->route('pendingorders')->with('message','Tus productos han sido ordenados correctamente');
+
+
     }
 
     public function UserProfile(){

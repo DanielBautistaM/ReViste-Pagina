@@ -33,11 +33,11 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         Route::post('/add-product-to-cart', 'AddProductToCart')->name('addproducttocart');
         Route::get('/shipping-address', 'GetShippingAddress')->name('shippingaddress');
         Route::post('/add-shipping-address', 'AddShippingAddress')->name('addshippingaddress');
+        Route::post('/place-order', 'PlaceOrder')->name('placeorder');
         Route::get('/checkout', 'Checkout')->name('checkout');
         Route::get('/user-profile', 'UserProfile')->name('userprofile');
         Route::get('/user-profile/pending-orders', 'PendingOrders')->name('pendingorders');
         Route::get('/user-profile/history', 'History')->name('history');
-
         Route::get('/todays-deal', 'TodaysDeal')->name('todaysdeal');
         Route::get('/custom-service', 'CustomerService')->name('customerservice');
         Route::get('/remove-cart-item/{id}', 'RemoveCartItem')->name('removeitem');
