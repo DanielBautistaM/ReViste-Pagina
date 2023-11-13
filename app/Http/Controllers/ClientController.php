@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ShippingInfo;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
@@ -43,6 +44,29 @@ class ClientController extends Controller
         ]);
 
         return redirect()->route('addtocart')->with('message', 'Se añadió correctamente al carrito');
+    }
+
+    public function RemoveCartItem($id){
+        Cart::findOrFail($id)->delete();
+        return redirect()->route('addtocart')->with('message', 'El producto se elimino del carrito exitosamente!');
+    }
+    
+    public function GetShippingAddress(){
+        return view('user_template.shippingaddress');
+    }
+
+    public function AddShippingAddress(Request $request){
+        ShippingInfo::insert([
+            'user_id' => Auth::id(),
+            'phone_numer' => $request->phone_number,
+            'city_name' => $request->city_name,
+            'postal_code' => $request->postal_code,
+
+
+        ]);
+
+        return redirect()->route('checkout');
+        
     }
 
     public function Checkout(){

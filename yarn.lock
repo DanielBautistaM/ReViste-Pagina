@@ -773,6 +773,11 @@ yaml@^2.1.1:
   resolved "https://registry.npmjs.org/yaml/-/yaml-2.3.4.tgz"
   integrity sha512-8aAvwVUSHpfEqTQ4w/KMlf3HcRdt50E5ODIQJBw1fQ5RL34xabzxtUlzTXVqc4rkZsPbvrXKWnABCD7kWSmocA==
 
+yard@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/yard/-/yard-1.0.3.tgz"
+  integrity sha512-226bF5DaLhWoeIP+tLrW/DWx3OBvbXckDCPw1a7B/ljVEHWoIvClQYxW5cIq1jUKKCdv1SWgwToRoPylhukwVA==
+
 yarn@^1.22.19:
   version "1.22.19"
   resolved "https://registry.npmjs.org/yarn/-/yarn-1.22.19.tgz"
