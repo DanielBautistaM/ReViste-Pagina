@@ -108,31 +108,15 @@
                     </div>
                     <div class="main">
                         <!-- Another variation with a button -->
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search this blog">
-                            <div class="input-group-append">
-                                <button class="btn btn-secondary" type="button"
-                                    style="background-color: #f26522; border-color:#f26522 ">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="header_box">
                         <div class="lang_box ">
                             <a href="#" title="Language" class="nav-link" data-toggle="dropdown"
                                 aria-expanded="true">
-                                <img src="{{ asset('home/images/flag-uk.png') }}" alt="flag" class="mr-2 "
-                                    title="United Kingdom"> Ingles <i class="fa fa-angle-down ml-2"
-                                    aria-hidden="true"></i>
+                               Español
                             </a>
-                            <div class="dropdown-menu ">
-                                <a href="#" class="dropdown-item">
-                                    <img src="{{ asset('home/images/flag-france.png') }}" class="mr-2"
-                                        alt="flag">
-                                    Frances
-                                </a>
-                            </div>
+                          
                         </div>
                         <div class="login_menu">
                             <ul>
@@ -179,10 +163,7 @@
         <div class="container">
             <div class="footer_logo"><a href="{{ url('/') }}"><img src="{{ asset('home/images/footer-logo.png') }}"></a>
             </div>
-            <div class="input_bt">
-                <input type="text" class="mail_bt" placeholder="Email" name="Your Email">
-                <span class="subscribe_bt" id="basic-addon2"><a href="#">Subscribite</a></span>
-            </div>
+      
             <div class="footer_menu">
                 <ul>
                     <li><a href="#">Mejores Ofertas</a></li>
