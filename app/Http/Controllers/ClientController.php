@@ -132,10 +132,20 @@ class ClientController extends Controller
         }
     
 
-    public function History( ){
-        return view('user_template.history');
-
-    }
+        public function History()
+        {
+            // Obtener el ID del usuario autenticado
+            $userid = Auth::id();
+        
+            // Obtener las órdenes aprobadas del usuario actual
+            $approved_orders = Order::where('status', 'approved')
+                                    ->where('userid', $userid)
+                                    ->latest()
+                                    ->with('product')  
+                                    ->get();
+        
+            return view('user_template.history', compact('approved_orders'));
+        }
 
 
     public function NewRelease(){

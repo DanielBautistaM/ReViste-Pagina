@@ -17,18 +17,21 @@
         </ul>
 
     </div> <div class="btn_main">
-
-    <form action="{{route('addproducttocart')}}" method="POST">
-        @csrf
-        <input type="hidden" value="{{$product->id}}" name="product_id">
-            <div class="form-group">
-                <input type="hidden" value="{{$product->price}}" name="price">
-
-                <label for="quantity">¿Cuántas vas llevar?</label>
-                <input class="form-control" type="number" min="1" placeholder="1" value="1" name="quantity">
-                </div>
-<br>
-<input class="btn btn-warning" type="submit" value="Añadir al carrito"> </form>
+                        @if($product->quantity > 0)
+                            <form action="{{route('addproducttocart')}}" method="POST">
+                                @csrf
+                                <input type="hidden" value="{{$product->id}}" name="product_id">
+                                <input type="hidden" value="{{$product->price}}" name="price">
+                                <div class="form-group">
+                                    <label for="quantity">¿Cuántas vas a llevar?</label>
+                                    <input class="form-control" type="number" min="1" max="{{$product->quantity}}" placeholder="1" value="1" name="quantity">
+                                </div>
+                                <br>
+                                <input class="btn btn-warning" type="submit" value="Añadir al carrito">
+                            </form>
+                        @else
+                            <p class="text-danger">Lo siento, este producto no está disponible en este momento.</p>
+                        @endif
 </div>
 </div> </div> </div> <div class="fashion_section"> <div id="main_slider"> <div class="carousel-item active">
     <div class="container"> <h1 class="fashion_taital">Productos Relacionados</h1> <div class="fashion_section_2">

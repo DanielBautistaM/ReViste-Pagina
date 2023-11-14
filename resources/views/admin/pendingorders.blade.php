@@ -41,8 +41,14 @@ Pending orders
                         <td>{{$order->product_id}}</td>
                         <td>{{$order->quantity}}</td>
                         <td>{{$order->total_price}}</td>
-                        <td><a href="{{ route('approveorder', $order->id) }}" class="btn btn-success" style="background-color: blue;">Aprobar</a></td>
-                
+                        <td><a href="{{ route('approveorder', $order->id) }}" class="btn btn-success" style="background-color: blue;">Aprobar</a>
+                        <form action="{{ route('admin.cancelorder', $order->id) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-danger">Cancelar Orden</button>
+                    </form>
+
+                                </td>
                     </tr>
 
                     @endforeach

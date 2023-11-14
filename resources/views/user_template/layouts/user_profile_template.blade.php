@@ -9,7 +9,7 @@
 
                 <li> <a href="{{route('userprofile')}}">Dashboard</a></li>
                 <li><a href="{{route('pendingorders')}}">Ordenes Pendientes</a></li>
-                <li> <a href="{{route('history')}}">Historial</a></li>
+                <li> <a href="{{route('history')}}">Aprobadas</a></li>
                 <li>
                 <a href="{{ route('logout') }}"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

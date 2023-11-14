@@ -3,7 +3,8 @@
 <div class="fashion_section">
     <div id="main_slider">
     <div class="container">
-    <h1 class="fashion_taital">{{ $category->category_name }} - ({{ $category->product_count }})</h1>
+    <h1 class="fashion_taital">{{ $category->category_name }} </h1>
+    
     <div class="fashion_section_2">
     <div class="row">
     @foreach ($products as $product)

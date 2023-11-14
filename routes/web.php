@@ -104,6 +104,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
             Route::get('/pending', [OrderController::class, 'index'])->name('pendingorder');
             Route::get('/checked', [OrderController::class,'checkedorders'])->name('checkedorder');
             Route::get('/approve/{id}', [OrderController::class, 'approveOrder'])->name('approveorder');
+            Route::delete('/cancelorder/{id}', [OrderController::class, 'cancelOrder'])->name('admin.cancelorder');
+            
+
             
         });
     });
