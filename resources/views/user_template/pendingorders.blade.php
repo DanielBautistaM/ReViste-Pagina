@@ -12,14 +12,14 @@ ORdenes pendientes
 
 <tr>
 
-<th>Product Id</th>
+<th>Nombre del Producto</th>
 <th>Price</th>
 </tr>
     @foreach($pending_orders as $order)
     <tr>
     <td>
 
-    {{$order->product_id}}
+    {{ $order->product->product_name }}
     </td>
    
 
@@ -33,3 +33,5 @@ ORdenes pendientes
 
 
 @endsection
+
+

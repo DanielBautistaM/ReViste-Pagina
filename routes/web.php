@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
+
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'Index')->name('home');
 });
@@ -53,6 +54,16 @@ Route::middleware(['auth', 'role:user', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/logout', function () {
+        auth()->logout();
+        
+        return redirect('/')->with('success', '¡Cierre de Sesión Exitoso!');;
+    })->name('logout');
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
@@ -91,8 +102,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
         Route::prefix('order')->group(function () {
             Route::get('/pending', [OrderController::class, 'index'])->name('pendingorder');
-            //CAMBIO ACA DE PENDINGORDERS PORQUE SINO NO FUNCIONA EN LA PARTE DE USUARIO, se llamaba pendingorders y lo pase a llamar pendingordersADMIN
-            //tonces ojito si despues se usa esto
+            Route::get('/checked', [OrderController::class,'checkedorders'])->name('checkedorder');
+            Route::get('/approve/{id}', [OrderController::class, 'approveOrder'])->name('approveorder');
+            
         });
     });
 });

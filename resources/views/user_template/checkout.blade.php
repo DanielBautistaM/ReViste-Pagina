@@ -6,7 +6,7 @@
         <div class="col-8">
          <h3>EL producto sera enviado a -</h3>
          <p>Ciudad - {{$shipping_address->city_name}}</p>
-         <p>Codigo Postal - {{$shipping_address->postal_code}}</p>
+         <p>Direccion:  - {{$shipping_address->postal_code}}</p>
          <p>Numero de Telefono - {{$shipping_address->phone_numer}}</p>
           
         </div>

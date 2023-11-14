@@ -140,6 +140,13 @@
                 <div data-i18n="Analytics">Ordenes Pendientes</div>
               </a>
             </li>
+            <li class="menu-item">
+              <a href="{{ route('checkedorder') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Ordenes Confirmadas</div>
+              </a>
+            </li>
+
 
 
 

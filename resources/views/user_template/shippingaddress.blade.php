@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="postal_code">Codigo Postal: </label>
+                        <label for="postal_code">Direccion: </label>
                         <br>
                         <input type="text" class="postal_code" name="postal_code">
                     </div>

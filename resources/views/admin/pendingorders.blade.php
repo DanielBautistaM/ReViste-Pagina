@@ -16,21 +16,24 @@ Pending orders
                 <table class="table">
                     <tr>
                         <th>User Id</th>
+                      <th>User Name</th>  
                         <th>ShippingInfo</th>
                         <th>product</th>
                         <th>quantity</th>
                         <th>total</th>
                         <th>status</th>
-                        <th>action</th>
+                       
                     </tr>
                     @foreach ($pending_orders as $order)
                     <tr>
                         <td>{{$order->userid}}</td>
+                        <td>{{ $order->user ? $order->user->name : 'Usuario no disponible' }}f</td>
                         <td>
                             <ul>
+                               
                                 <li>Numero de Telefono - {{$order->shipping_phoneNumber}}</li>
                                 <li>Ciudad - {{$order->shipping_city}}</li>
-                                <li>Codigo Postal - {{$order->shipping_postalcode}}</li>
+                                <li>Direccion - {{$order->shipping_postalcode}}</li>
 
                             </ul>
                         </td>
@@ -38,7 +41,7 @@ Pending orders
                         <td>{{$order->product_id}}</td>
                         <td>{{$order->quantity}}</td>
                         <td>{{$order->total_price}}</td>
-                        <td><a href="" class="btn btn-success">Aprobar</a></td>
+                        <td><a href="{{ route('approveorder', $order->id) }}" class="btn btn-success" style="background-color: blue;">Aprobar</a></td>
                 
                     </tr>
 

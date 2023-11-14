@@ -25,7 +25,7 @@
                 <input type="hidden" value="{{$product->price}}" name="price">
 
                 <label for="quantity">¿Cuántas vas llevar?</label>
-                <input class="form-control" type="number" min="1" placeholder="1" name="quantity">
+                <input class="form-control" type="number" min="1" placeholder="1" value="1" name="quantity">
                 </div>
 <br>
 <input class="btn btn-warning" type="submit" value="Añadir al carrito"> </form>
@@ -37,7 +37,7 @@
         @foreach ($related_products as $product)
 
 
-        class="col-lg-4 col-sm-4">
+        <div class="col-lg-4 col-sm-4">
         <div class="box_main">
         <h4 class="shirt_text">{{$product->product_name}}</h4>
         <p class="price_text">Precio <span style="color: #262626;">${{$product->price}} </span>
@@ -59,8 +59,10 @@
             </div>
             </div>
             </div>
+            
 </div>
 @endforeach
+</div>
 </div>
 </div>
 </div>

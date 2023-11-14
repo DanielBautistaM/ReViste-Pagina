@@ -112,12 +112,25 @@ class ClientController extends Controller
 
 
 
-    public function PendingOrders( ){
 
-        $pending_orders = Order::where('status','pending')->latest()->get();
-        return view('user_template.pendingorders',compact('pending_orders'));
 
-    }
+  
+        // Obtener el ID del usuario autenticado
+        public function PendingOrders( ){
+            $userid = Auth::id();
+
+            // Obtener las órdenes pendientes solo para el usuario autenticado
+            $pending_orders = Order::where('status', 'pending')
+                ->where('userid', $userid) // Agrega esta condición
+                ->latest()
+                ->with('product')
+                ->get();
+        
+            return view('user_template.pendingorders', compact('pending_orders'));
+        
+    
+        }
+    
 
     public function History( ){
         return view('user_template.history');

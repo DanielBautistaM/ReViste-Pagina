@@ -46,7 +46,7 @@
 
 <body>
     <!-- banner bg main start -->
-    <div class="banner_bg_main">
+    <div class="banner_bg_main" >
         <!-- header top section start -->
         <div class="container">
             <div class="header_section_top">
@@ -85,7 +85,7 @@
                 <div class="containt_main">
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a href="index.html">Home</a>
+                        <a href="{{ url('/') }}">Home</a>
 
                            @foreach ($categories as $category)
                            <a href="{{ route('category', [$category->id, $category->slug]) }}">{{$category->category_name}}</a>
@@ -136,14 +136,23 @@
                         </div>
                         <div class="login_menu">
                             <ul>
-                                <li><a href="#">
+                                <li><a href="{{ route('addtocart') }}">
                                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                         <span class="padding_10">Carrito</span></a>
                                 </li>
-                                <li><a href="#">
-                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                        <span class="padding_10">Usuario</span></a>
-                                </li>
+                                <li>
+                                        <a href="{{ route('pendingorders') }}">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                            <span class="padding_10">
+                                                @if(auth()->check())
+                                                  {{ auth()->user()->name }}
+                                                @else
+                                                    Usuario
+                                                @endif
+                                            </span>
+                                        </a>
+                                    </li>
+
                             </ul>
                         </div>
                     </div>
@@ -158,6 +167,7 @@
     <!-- common part -->
     <div class="container py-5" style="margin-top: 200px;">
         @yield('main-content')
+        
     </div>
 
     <!-- end of ommon part -->

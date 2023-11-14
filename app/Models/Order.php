@@ -13,7 +13,19 @@ class Order extends Model
         'shipping_phoneNumber',
         'shipping_city',
         'shipping_postalcode',
-        'product_name',
+        'product_id',
         'quantity,'
     ];
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+       
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'userid');
+    }
+
+
+    
 }
