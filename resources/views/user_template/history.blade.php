@@ -9,6 +9,7 @@
                 <th>Nombre del Producto</th>
                 <th>Cantidad</th>
                 <th>Precio Total</th>
+                <th>Aprobados</th>
             </tr>
             @foreach($approved_orders as $order)
                 <tr>
@@ -22,6 +23,7 @@
                     </td>
                     <td> {{ $order->quantity }} </td>
                     <td>{{ $order->total_price }}</td>
+                    <td><img src="{{ asset('home/images/check.png') }}" alt="" style="width: 30px; height: 30px;"></td>
                 </tr>
             @endforeach
         </table>

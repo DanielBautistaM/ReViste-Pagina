@@ -8,6 +8,5 @@ Dashboard - ReViste-Ecommerce
 
 @section('content')
 
-Hello from dashboard
 
 @endsection
